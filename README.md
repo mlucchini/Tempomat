@@ -22,6 +22,9 @@ The TL;DR is:
 
 That being said, there is nothing stopping you from building the project from the source and just running it yourself, that's ok, just don't try to rebrand it an sell it under a different name, there is a packaged version on the app stores for a small fee which would be a great way of giving back.
 
+## Android Support
+This being a RN app can also run on android, however I have run out of free time to add such big features without receiving some economic incentive, if you do create a PR I would gladly merge it and release it though, you only need to create a small amount of native code to securely store strings on mobile devices.
+
 ## Contributing
 Feel free to open a PR, I will gladly review it and merge into master and manage all the release cycle.
 
