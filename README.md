@@ -2,7 +2,7 @@
 
 Tempomat is a macOS/iPhone/iPad application to monitor your CI pipelines in all of your devices.
 
-![Tempomat Banner](https://github.com/ospfranco/rn-macos-menubar-template/blob/master/assets/Banner1.jpg?raw=true)
+![Tempomat Banner](https://github.com/ospfranco/tempomat/blob/master/assets/Banner1.jpg?raw=true)
 
 ## Features
 - See all of your repository branches in a single view
