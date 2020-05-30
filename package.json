@@ -1,0 +1,61 @@
+{
+  "name": "tempomat",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android:run": "react-native run-android",
+    "ios:run": "react-native run-ios",
+    "ios:install": "cd ios && pod install",
+    "postinstall": "patch-package",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "macos:run": "node node_modules/react-native-macos/local-cli/cli.js run-macos --scheme='Tempomat MacOS Debug'",
+    "macos:start": "node node_modules/react-native-macos/local-cli/cli.js start --use-react-native-macos",
+    "macos:install": "cd node_modules/react-native-vector-icons && mv RNVectorIcons.podspec X && cd ../../macos && pod install && cd ../node_modules/react-native-vector-icons && mv X RNVectorIcons.podspec"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2",
+    "patch-package": "^6.2.2",
+    "react": "16.11.0",
+    "react-native": "0.62.2",
+    "react-native-global-props": "^1.1.5",
+    "react-native-macos": "^0.61.37",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "2.18.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/runtime": "^7.6.2",
+    "@react-native-community/eslint-config": "^1.0.0",
+    "@types/jest": "^24.0.24",
+    "@types/react-native": "^0.62.0",
+    "@types/react-native-vector-icons": "^6.4.5",
+    "@types/react-navigation": "2",
+    "@types/react-test-renderer": "16.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^7.1.0",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "prettier": "2.0.5",
+    "react-test-renderer": "16.11.0",
+    "typescript": "3.9.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
