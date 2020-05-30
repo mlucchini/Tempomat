@@ -167,7 +167,7 @@ export const GeneralConfigContainer = observer(({navigation}: IProps) => {
       )}
 
       <View style={styles.buttonContainer}>
-        <Image source={Images.tempomat} />
+        {/* <Image source={Images.tempomat} /> */}
         <Text style={{fontSize: global.metrics.tl}}>Tempomat</Text>
         <Text>Oscar Franco, 2020</Text>
         {global.isMacOS && (
@@ -175,7 +175,7 @@ export const GeneralConfigContainer = observer(({navigation}: IProps) => {
         )}
         <TempoButton title="Support" onPress={openMail} />
         {global.isMacOS && (
-          <TempoButton title="Close App" onPress={nodeStore.closeApp} />
+          <TempoButton title="Quit" onPress={nodeStore.closeApp} />
         )}
         {/* <TempoButton
           title="Test notification"

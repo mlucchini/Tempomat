@@ -9,7 +9,7 @@ export const MacosHeaderComponent = ({navigation}: IProps) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Icon name="close" size={22} />
+        <Icon name="close" size={22} style={styles.closeButton} />
       </TouchableOpacity>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>
@@ -39,5 +39,14 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     flex: 1,
+  },
+  closeButton: {
+    //@ts-ignore
+    color: {
+      dynamic: {
+        light: global.colors.gray800,
+        dark: global.colors.gray010,
+      },
+    },
   },
 })
