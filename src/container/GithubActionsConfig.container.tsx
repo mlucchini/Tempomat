@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
+  Linking,
 } from "react-native"
 import {observer} from "mobx-react"
 import {useStore} from "Root.store"
@@ -17,6 +18,11 @@ let placeHolderStyle: any = {
     dark: global.colors.gray200,
     light: global.colors.gray500,
   },
+}
+
+function openGithubGuide() {
+  Linking.openURL(`
+  https://tempomat.dev/githubTokenGuide/`)
 }
 
 export const GithubActionsConfigContainer = observer(() => {
@@ -52,9 +58,11 @@ export const GithubActionsConfigContainer = observer(() => {
         return (
           <Row key={`github-repo-${ii}`} style={styles.row}>
             <TextInput
-              placeholder="ospfranco/link-preview-js"
+              placeholder={`Enter repository slug ${ii + 1}...`}
               style={styles.repositoryField}
               placeholderTextColor={placeHolderStyle}
+              value={r}
+              onChangeText={(t) => nodeStore.setGithubRepoAtIndex(t, ii)}
             />
             {ii !== 0 && (
               <TouchableOpacity onPress={() => nodeStore.deleteGithubRepo(ii)}>
@@ -64,19 +72,25 @@ export const GithubActionsConfigContainer = observer(() => {
           </Row>
         )
       })}
-      <Text
-        style={{
-          paddingVertical: global.metrics.ps,
-          alignSelf: `center`,
-        }}>
-        Due to API limitations you have to specify github repositories
-        individually
-      </Text>
+
       <TempoButton
         primary
         title="Add Repository"
         onPress={nodeStore.addEmptyGithubRepo}
       />
+      <Text
+        style={{
+          padding: global.metrics.pl,
+        }}>
+        Due to API limitations you have to specify github repositories
+        individually, enter each line with the format: [username]/[repo_name]
+      </Text>
+      <View style={{alignItems: `center`}}>
+        <TempoButton
+          title="How do I create a Github Personal Token"
+          onPress={openGithubGuide}
+        />
+      </View>
     </ScrollView>
   )
 })

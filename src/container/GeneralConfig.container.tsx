@@ -47,6 +47,10 @@ export const GeneralConfigContainer = observer(({navigation}: IProps) => {
     )
   }
 
+  function openGithub() {
+    Linking.openURL(`https://github.com/ospfranco/tempomat`)
+  }
+
   return (
     <ScrollView style={styles.container}>
       <Row vertical="center">
@@ -168,15 +172,18 @@ export const GeneralConfigContainer = observer(({navigation}: IProps) => {
 
       <View style={styles.buttonContainer}>
         {/* <Image source={Images.tempomat} /> */}
-        <Text style={{fontSize: global.metrics.tl}}>Tempomat</Text>
-        <Text>Oscar Franco, 2020</Text>
+
         {global.isMacOS && (
           <TempoButton title="Review on App Store" onPress={openAppStore} />
         )}
         <TempoButton title="Support" onPress={openMail} />
+        <TempoButton title="Source Code" onPress={openGithub} />
         {global.isMacOS && (
           <TempoButton title="Quit" onPress={nodeStore.closeApp} />
         )}
+
+        <Text style={{fontSize: global.metrics.tl}}>Tempomat</Text>
+        <Text>Oscar Franco, 2020</Text>
         {/* <TempoButton
           title="Test notification"
           onPress={() => nodeStore.sendNativeNotification(`Test notification`)}

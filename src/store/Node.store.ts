@@ -56,7 +56,6 @@ export class NodeStore {
   }
 
   private persist = async () => {
-    // console.warn(`writing tempomat State`)
     await NativeModules.TempomatNative?.securelyStore(
       `tempomatState`,
       JSON.stringify({
@@ -366,5 +365,9 @@ export class NodeStore {
     }
 
     this.fetchInterval = interval
+  }
+
+  @action setGithubRepoAtIndex = (t: string, ii: number) => {
+    this.githubRepos[ii] = t
   }
 }
