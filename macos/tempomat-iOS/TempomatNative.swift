@@ -1,15 +1,3 @@
-*-/
-///
-///
-///
-///
-///
-///
-///
-///
-///
-/////Author: Oscar Franco, created on: 25.05.20
-
 import Foundation
 import KeychainAccess
 import UserNotifications
