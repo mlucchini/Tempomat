@@ -10,7 +10,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "macos:run": "node node_modules/react-native-macos/local-cli/cli.js run-macos --scheme='Tempomat MacOS Debug'",
+    "macos:run": "node node_modules/react-native-macos/local-cli/cli.js run-macos --scheme='macOS'",
     "macos:start": "node node_modules/react-native-macos/local-cli/cli.js start --use-react-native-macos",
     "macos:install": "cd node_modules/react-native-vector-icons && mv RNVectorIcons.podspec X && cd ../../macos && pod install && cd ../node_modules/react-native-vector-icons && mv X RNVectorIcons.podspec"
   },

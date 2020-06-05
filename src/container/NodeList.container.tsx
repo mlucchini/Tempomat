@@ -11,12 +11,13 @@ import {
   TouchableOpacity,
   View,
   SafeAreaView,
+  Platform,
 } from "react-native"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import {NavigationScreenProps} from "react-navigation"
 import {useStore} from "Root.store"
 
-let ICON_SIZE = global.isMacOS ? 16 : 24
+let ICON_SIZE = Platform.OS === `macos` ? 16 : 24
 
 interface IProps extends NavigationScreenProps {}
 
@@ -33,8 +34,8 @@ export const NodeListContainer = observer(({navigation}: IProps) => {
 
   return (
     <>
-      <SafeAreaView style={{flex: 0, backgroundColor: global.colors.gray010}} />
-      <SafeAreaView style={{flex: 1, backgroundColor: `white`}}>
+      <SafeAreaView style={styles.safeAreaView1} />
+      <SafeAreaView style={styles.safeAreaView2}>
         <FlatList
           data={root.nodeStore.sortedFilteredNodes}
           renderItem={renderNodeItem}
@@ -77,6 +78,14 @@ NodeListContainer.navigationOptions = () => ({
 })
 
 const styles = StyleSheet.create({
+  safeAreaView1: {
+    flex: 0,
+    backgroundColor: global.colors.gray010,
+  },
+  safeAreaView2: {
+    flex: 1,
+    backgroundColor: `white`,
+  },
   list: {
     flex: 1,
     //@ts-ignore
@@ -105,7 +114,7 @@ const styles = StyleSheet.create({
   },
   sortText: {
     paddingHorizontal: global.metrics.pm,
-    fontSize: global.metrics.tm,
+    // fontSize: global.metrics.tm,
     //@ts-ignore
     color: {
       dynamic: {
