@@ -68,7 +68,8 @@ export const NodeRow = ({node}: IProps) => {
 
 const styles = StyleSheet.create({
   row: {
-    padding: Platform.OS === `macos` ? 0 : global.metrics.ps,
+    paddingVertical: Platform.OS === `macos` ? 0 : global.metrics.ps,
+    paddingHorizontal: global.metrics.ps,
   },
   rowIcon: {
     height: global.metrics.imgSmall,

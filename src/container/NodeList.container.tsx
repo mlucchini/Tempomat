@@ -53,7 +53,7 @@ export const NodeListContainer = observer(({navigation}: IProps) => {
           <Spacer />
           <TouchableOpacity
             onPress={root.nodeStore.toggleSorting}
-            style={{paddingRight: global.metrics.pl}}>
+            style={styles.sortingButton}>
             <Row vertical="center">
               <Icon name="sort" size={ICON_SIZE} style={styles.iconStyle} />
               <Text style={styles.sortText}>{root.nodeStore.sortingKey}</Text>
@@ -114,7 +114,6 @@ const styles = StyleSheet.create({
   },
   sortText: {
     paddingHorizontal: global.metrics.pm,
-    // fontSize: global.metrics.tm,
     //@ts-ignore
     color: {
       dynamic: {
@@ -131,5 +130,8 @@ const styles = StyleSheet.create({
         dark: `white`,
       },
     },
+  },
+  sortingButton: {
+    paddingRight: global.metrics.pl,
   },
 })
