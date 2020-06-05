@@ -195,7 +195,8 @@ export class NodeStore {
         this.nodes.forEach((node) => {
           if (
             node.status === Status.failed &&
-            previousNodes[node.id]?.status !== Status.failed
+            (!previousNodes[node.id] ||
+              previousNodes[node.id].status !== Status.failed)
           ) {
             this.sendNativeNotification(`${node.label} is broken`)
           }
