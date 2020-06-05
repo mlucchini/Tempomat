@@ -183,17 +183,20 @@ export class NodeStore {
     this.fetching = true
     let responses = await Promise.all(promises)
 
-    runInAction(() => {
-      let previousNodes = this.nodes.reduce((acc, node) => {
-        acc[node.id] = node
-        return acc
-      }, {} as any)
+    let previousNodes = this.nodes.reduce((acc, node) => {
+      acc[node.id] = node
+      return acc
+    }, {} as any)
 
+    runInAction(() => {
       this.nodes = responses.filter((n) => n).flat()
 
       if (this.notificationsEnabled) {
         this.nodes.forEach((node) => {
-          if (node.status === Status.failed && !!previousNodes[node.id]) {
+          if (
+            node.status === Status.failed &&
+            previousNodes[node.id]?.status !== Status.failed
+          ) {
             this.sendNativeNotification(`${node.label} is broken`)
           }
         })
