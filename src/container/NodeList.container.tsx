@@ -61,7 +61,11 @@ export const NodeListContainer = observer(({navigation}: IProps) => {
           </TouchableOpacity>
           <TouchableOpacity onPress={root.nodeStore.fetchNodes}>
             {root.nodeStore.fetching ? (
-              <ActivityIndicator style={{backgroundColor: `transparent`}} />
+              <Icon
+                name="clock"
+                style={styles.loadingIconStyle}
+                size={ICON_SIZE}
+              />
             ) : (
               <Icon name="refresh" style={styles.iconStyle} size={ICON_SIZE} />
             )}
@@ -127,6 +131,15 @@ const styles = StyleSheet.create({
     color: {
       dynamic: {
         light: global.colors.gray900,
+        dark: `white`,
+      },
+    },
+  },
+  loadingIconStyle: {
+    // @ts-ignore
+    color: {
+      dynamic: {
+        light: global.colors.gray400,
         dark: `white`,
       },
     },
