@@ -61,14 +61,24 @@ export class ApiStore {
     }
   }
 
-  private get = (props: {url: string; auth?: string; headers?: any}) =>
-    this.ajaxCall({method: `GET`, ...props})
+  private get = (props: {
+    url: string
+    auth?: string
+    headers?: Record<string, string>
+  }) => this.ajaxCall({method: `GET`, ...props})
 
-  private post = (props: {url: string; auth?: string; body?: any}) =>
-    this.ajaxCall({method: `POST`, ...props})
+  private post = (props: {
+    url: string
+    auth?: string
+    body?: any
+    headers?: Record<string, string>
+  }) => this.ajaxCall({method: `POST`, ...props})
 
-  private put = (props: {url: string; auth?: string; body?: any}) =>
-    this.ajaxCall({method: `PUT`, ...props})
+  private put = (props: {
+    url: string
+    auth?: string
+    headers?: Record<string, string>
+  }) => this.ajaxCall({method: `PUT`, ...props})
 
   //////////////////////////////////////////////////
   // Start of proper API
@@ -292,6 +302,7 @@ export class ApiStore {
     )
 
     let resolvedWorkflows = await Promise.all(workflowsPromises)
+    // @ts-ignore
     return resolvedWorkflows.filter((v) => v).flat()
   }
 
@@ -318,5 +329,18 @@ export class ApiStore {
     } else {
       return null
     }
+  }
+
+  public triggerCircleciRebuild(node: Node) {
+    if (!node.buildUrl) {
+      throw new Error(`Could not rebuild node without a known build url`)
+    }
+
+    return this.post({
+      url: node.buildUrl,
+      headers: {
+        "Content-Type": `application/json`,
+      },
+    })
   }
 }

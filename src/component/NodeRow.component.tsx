@@ -6,12 +6,14 @@ import {
   StyleSheet,
   Platform,
   Linking,
+  Alert,
 } from "react-native"
 import {Node} from "model"
 import {Row} from "./Row.component"
 import {Images} from "Assets"
 import {Spacer} from "./Spacer.component"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
+import {useStore} from "Root.store"
 
 interface IProps {
   node: Node
@@ -31,6 +33,7 @@ function getTextStyle(hovered: boolean) {
 }
 
 export const NodeRow = ({node}: IProps) => {
+  let store = useStore()
   let icon = Images[`${node.source.toLowerCase()}_${node.status}`]
   let [hovered, setHovered] = useState(false)
 
@@ -40,8 +43,12 @@ export const NodeRow = ({node}: IProps) => {
     Linking.openURL(node.url)
   }
 
-  function triggerRebuild() {
-    console.warn(`should trigger rebuild of`, node.label)
+  async function triggerRebuild() {
+    try {
+      store.nodeStore.triggerRebuild(node)
+    } catch (e) {
+      Alert.alert(`Could not trigger rebuild`)
+    }
   }
 
   return (

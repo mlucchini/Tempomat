@@ -239,6 +239,25 @@ export class NodeStore {
     })
   }
 
+  public triggerRebuild(node: Node) {
+    switch (node.source) {
+      case Source.circleci:
+        return this.root.api.triggerCircleciRebuild(node)
+
+      // case Source.appcenter:
+      //   return this.root.api.fetchAppcenterNodes(t.key)
+
+      // case Source.travisci:
+      //   return this.root.api.fetchTravisciNodes(t.key)
+
+      // case Source.bitrise:
+      //   return this.root.api.fetchBitriseNodes(t.key)
+
+      default:
+        break
+    }
+  }
+
   @action
   public addToken(source: Source, name: string, key: string) {
     let token = new Token()
