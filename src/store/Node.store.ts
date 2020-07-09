@@ -3,7 +3,7 @@ import {RootStore} from "Root.store"
 import {Node, Token, Source, Status} from "model"
 import {NativeModules, Platform, Alert, Linking} from "react-native"
 
-enum SortingKey {
+export enum SortingKey {
   date = `Date`,
   status = `Status`,
   name = `Name`,
@@ -72,6 +72,8 @@ export class NodeStore {
   }
 
   private hydrate = async () => {
+    // Fetches the app state from the native keychain, is stored encrypted
+    // but once in memory you can just access it normally
     let retrievedJSON = await NativeModules.TempomatNative?.securelyRetrieve(
       `tempomatState`,
     )
@@ -284,7 +286,6 @@ export class NodeStore {
       // eslint-disable-next-line no-new
       new RegExp(pattern)
     } catch (e) {
-      // console.warn(`not a valid regex pattern`, e)
       isValid = false
     }
 

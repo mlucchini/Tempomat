@@ -13,9 +13,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let jsCodeLocation: URL
 
     #if DEBUG
-    jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource:nil)
+      jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource:nil)
     #else
-    jsCodeLocation = Bundle.main.url(forResource: "main", withExtension: "jsbundle")!
+      jsCodeLocation = Bundle.main.url(forResource: "main", withExtension: "jsbundle")!
     #endif
     
     let rootView = RCTRootView(bundleURL: jsCodeLocation, moduleName: "tempomat", initialProperties: nil, launchOptions: nil)

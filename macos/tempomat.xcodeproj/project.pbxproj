@@ -760,6 +760,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xcc -fmodule-map-file=\"${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess-macOS/KeychainAccess.modulemap\" -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ospfranco.tempomat;
 				PRODUCT_NAME = Tempomat;
 				SDKROOT = macosx;
