@@ -247,11 +247,11 @@ export class NodeStore {
       case Source.appcenter:
         return this.root.api.triggerAppcenterRebuild(node)
 
-      // case Source.travisci:
-      //   return this.root.api.fetchTravisciNodes(t.key)
+      case Source.travisci:
+        return this.root.api.triggerTravisciRebuild(node)
 
-      // case Source.bitrise:
-      //   return this.root.api.fetchBitriseNodes(t.key)
+      case Source.bitrise:
+        return this.root.api.triggerBitriseRebuild(node)
 
       default:
         break

@@ -176,6 +176,9 @@ export class DtoMapper {
       node.status = status
       node.key = key
       node.date = branch.finished_at
+      node.buildUrl = `https://api.bitrise.io/v0.1/apps/${repo.slug}/builds`
+      // Storing the API provided repository "title" to be used in further calls to the api
+      node.extra = repo.title
 
       return node
     })

@@ -189,7 +189,6 @@ export class ApiStore {
     )
 
     let resolvedBranches = await Promise.all(branchPromises)
-    console.warn(`appcenter branches`, resolvedBranches)
 
     let nodes = resolvedBranches
       .map((branches, ii) =>
@@ -341,6 +340,50 @@ export class ApiStore {
       url: node.buildUrl,
       headers: {
         "Content-Type": `application/json`,
+      },
+    })
+  }
+
+  public triggerAppcenterRebuild(node: Node) {
+    if (!node.buildUrl) {
+      throw new Error(`Cannot retrigger build without build url`)
+    }
+
+    return this.post({
+      url: node.buildUrl,
+      headers: {
+        "Content-Type": `application/json`,
+        "X-API-Token": node.key!,
+      },
+    })
+  }
+
+  public triggerTravisciRebuild(_: Node) {
+    return Promise.reject(
+      new Error(
+        `There is currently no way to manually trigger a job on travisCI`,
+      ),
+    )
+  }
+
+  public triggerBitriseRebuild(node: Node) {
+    if (!node.buildUrl) {
+      throw new Error(`Cannot retrigger build without build url`)
+    }
+
+    return this.post({
+      url: node.buildUrl,
+      headers: {
+        "Content-Type": `application/json`,
+        Authorization: node.key!,
+      },
+      body: {
+        hook_info: {
+          type: `bitrise`,
+        },
+        build_params: {
+          branch: node.extra,
+        },
       },
     })
   }

@@ -13,4 +13,6 @@ export class Node {
   public buildUrl?: string
   public date?: string
   public jobId?: string
+  // used for some extra field needed to make requests to the api
+  public extra?: string
 }
