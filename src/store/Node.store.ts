@@ -191,6 +191,9 @@ export class NodeStore {
     }, {} as any)
 
     runInAction(() => {
+      // @ts-ignore
+      // TS complains here, at is right, promise.all might return undefined values
+      // however filter n => n does remove any falsy values in the array
       this.nodes = responses.filter((n) => n).flat()
 
       if (this.notificationsEnabled) {

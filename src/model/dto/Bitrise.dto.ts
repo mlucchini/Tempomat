@@ -1,21 +1,22 @@
 export interface BitrisePaginated<T> {
-  data: T[];
+  data: T[]
 }
 
 export interface BitriseRepoDto {
-  slug: string;
-  title: string;
-  repo_owner: string;
-  provider: string;
+  slug: string
+  title: string
+  repo_owner: string
+  provider: string
+  branch: string
 }
 
 export interface BitriseBranchDto {
-  status: BitriseStatus;
-  build_number: number;
-  commit_message?: string;
-  slug: string;
-  branch: string;
-  finished_at?: string;
+  status: BitriseStatus
+  build_number: number
+  commit_message?: string
+  slug: string
+  branch: string
+  finished_at?: string
 }
 
 export enum BitriseStatus {

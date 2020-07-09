@@ -40,6 +40,10 @@ export const NodeRow = ({node}: IProps) => {
     Linking.openURL(node.url)
   }
 
+  function triggerRebuild() {
+    console.warn(`should trigger rebuild of`, node.label)
+  }
+
   return (
     <TouchableOpacity
       // @ts-ignore
@@ -57,7 +61,7 @@ export const NodeRow = ({node}: IProps) => {
           </TouchableOpacity>
         )} */}
         {showQuickActions && !!node.buildUrl && (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={triggerRebuild}>
             <Icon name="refresh" size={18} />
           </TouchableOpacity>
         )}
