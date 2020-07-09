@@ -50,12 +50,13 @@ export class DtoMapper {
 
         let vcsLong = repo.vcs_url.includes(`github`) ? `github` : `bitbucket`
         let vcsShort = repo.vcs_url.includes(`github`) ? `gh` : `bb`
+        let unscapedName = unescape(name)
 
         node.id = `${Source.circleci}-${repo.username}-${repo.reponame}-${name}`
         node.url = `https://circleci.com/${vcsShort}/${repo.username}/${repo.reponame}/tree/${name}`
         node.date = lastestDate
         node.source = Source.circleci
-        node.label = `${repo.username}/${repo.reponame} [${name}] #${jobId}`
+        node.label = `${repo.username}/${repo.reponame} [${unscapedName}] #${jobId}`
         node.status = status
         node.key = key
         node.buildUrl = `https://circleci.com/api/v1.1/project/${vcsLong}/${repo.username}/${repo.reponame}/tree/${name}?circle-token=${key}`
