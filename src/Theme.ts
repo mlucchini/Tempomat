@@ -9,7 +9,7 @@ global.colors = {
   gray050: `#EEE`,
   gray010: `#F3F3F3`,
   blue500: `#00A4FF`,
-};
+}
 
 global.metrics = {
   imgSmall: 16,
@@ -21,4 +21,4 @@ global.metrics = {
   ts: 14,
   tm: 16,
   tl: 18,
-};
+}

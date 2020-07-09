@@ -3,7 +3,6 @@ import {observer} from "mobx-react"
 import {Node} from "model"
 import React from "react"
 import {
-  ActivityIndicator,
   FlatList,
   ListRenderItemInfo,
   StyleSheet,

@@ -77,27 +77,27 @@ export class DtoMapper {
       let node = new Node()
       let status = Status.pending
 
-      if (branch.lastbuild?.status === `inProgress`) {
+      if (branch.lastBuild?.status === `inProgress`) {
         status = Status.running
       }
 
-      if (branch.lastbuild?.result === `succeeded`) {
+      if (branch.lastBuild?.result === `succeeded`) {
         status = Status.passed
       }
 
-      if (branch.lastbuild?.result === `failed`) {
+      if (branch.lastBuild?.result === `failed`) {
         status = Status.failed
       }
 
-      let jobId: string = branch.lastbuild
-        ? `${branch.lastbuild.buildNumber}`
-        : `-`
+      let jobId: string = branch.lastBuild
+        ? ` #${branch.lastBuild.buildNumber}`
+        : ``
 
       let urlFriendlyBranchName = branch.branch.name.replace(`/`, `%2F`)
 
       node.id = `${Source.appcenter}-${repo.owner.name}-${repo.name}-${branch.branch.name}`
       node.url = `https://appcenter.ms/users/${repo.owner.name}/apps/${repo.name}/build/branches/${urlFriendlyBranchName}`
-      node.label = `${repo.owner.name}/${repo.name} [${branch.branch.name}] #${jobId}`
+      node.label = `${repo.owner.name}/${repo.name} [${branch.branch.name}]${jobId}`
       node.source = Source.appcenter
       node.status = status
       node.key = key

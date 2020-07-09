@@ -189,6 +189,7 @@ export class ApiStore {
     )
 
     let resolvedBranches = await Promise.all(branchPromises)
+    console.warn(`appcenter branches`, resolvedBranches)
 
     let nodes = resolvedBranches
       .map((branches, ii) =>

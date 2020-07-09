@@ -244,8 +244,8 @@ export class NodeStore {
       case Source.circleci:
         return this.root.api.triggerCircleciRebuild(node)
 
-      // case Source.appcenter:
-      //   return this.root.api.fetchAppcenterNodes(t.key)
+      case Source.appcenter:
+        return this.root.api.triggerAppcenterRebuild(node)
 
       // case Source.travisci:
       //   return this.root.api.fetchTravisciNodes(t.key)

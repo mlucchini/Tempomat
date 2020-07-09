@@ -1,17 +1,17 @@
 export interface AppcenterBranchDto {
-  branch: BranchInfoDto;
-  lastbuild: BuildInfoDto;
-  configured: boolean;
+  branch: BranchInfoDto
+  lastBuild: BuildInfoDto
+  configured: boolean
 }
 
 interface BranchInfoDto {
-  name: string;
+  name: string
 }
 
 interface BuildInfoDto {
-  id: number;
-  buildNumber: string;
-  sourceVersion: string;
-  status: string; // "inProgress"
-  result: string; // "succeeded" / "failed" / among many others
+  id: number
+  buildNumber: string
+  sourceVersion: string
+  status: string // "inProgress"
+  result: string // "succeeded" / "failed" / among many others
 }
