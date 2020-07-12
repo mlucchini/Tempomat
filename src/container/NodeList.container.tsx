@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
         dark: global.colors.gray900,
       },
     },
-    padding: global.metrics.pl,
+    padding: global.metrics.pm,
   },
   header: {
     height: 0,
