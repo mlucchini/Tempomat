@@ -24,7 +24,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     popover = NSPopover()
 
-    popover.contentSize = NSSize(width: 700, height: 800)
+    var screenHeight = CGFloat(800)
+    if(NSScreen.main != nil) {
+      screenHeight = NSScreen.main!.frame.height
+    }
+
+    let windowHeight = screenHeight / 1.5
+
+    popover.contentSize = NSSize(width: 700, height: Int(windowHeight))
     popover.animates = true
     popover.behavior = .transient
     popover.contentViewController = rootViewController
@@ -32,22 +39,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     statusBarItem = NSStatusBar.system.statusItem(withLength: CGFloat(NSStatusItem.variableLength))
 
     if let button = self.statusBarItem.button {
-        // not fucking worth it to try to move inside extension, just leave it here, move on
       button.imagePosition = NSControl.ImagePosition.imageLeft
       button.image = NSImage(named: "IconSmall")
       button.action = #selector(togglePopover(_:))
       button.title = "0 0 0"
     }
-
-//    store.registerItemListener(showPopover)
-//    let rootViewController = UIViewController()
-//    rootViewController.view = rootView
-//
-//    self.window = UIWindow(frame: UIScreen.main.bounds)
-//    self.window?.rootViewController = rootViewController
-//    self.window?.makeKeyAndVisible()
-
-//    return true
   }
 
   @objc func togglePopover(_ sender: AnyObject?) {
