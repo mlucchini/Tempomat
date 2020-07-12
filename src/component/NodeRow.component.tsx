@@ -8,12 +8,13 @@ import {
   Linking,
   Alert,
 } from "react-native"
-import {Node} from "model"
+import {Node, Status} from "model"
 import {Row} from "./Row.component"
 import {Images} from "Assets"
 import {Spacer} from "./Spacer.component"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import {useStore} from "Root.store"
+import {observer} from "mobx-react"
 
 interface IProps {
   node: Node
@@ -32,7 +33,7 @@ function getTextStyle(hovered: boolean) {
   return baseStyle
 }
 
-export const NodeRow = ({node}: IProps) => {
+export const NodeRow = observer(({node}: IProps) => {
   let store = useStore()
   let icon = Images[`${node.source.toLowerCase()}_${node.status}`]
   let [hovered, setHovered] = useState(false)
@@ -51,6 +52,9 @@ export const NodeRow = ({node}: IProps) => {
     }
   }
 
+  let iconStyle =
+    node.status === Status.pending ? styles.rowIconPending : styles.rowIcon
+
   return (
     <TouchableOpacity
       // @ts-ignore
@@ -58,7 +62,7 @@ export const NodeRow = ({node}: IProps) => {
       onMouseLeave={() => setHovered(false)}
       onPress={openUrl}>
       <Row vertical="center" style={styles.row}>
-        <Image source={icon} style={styles.rowIcon} />
+        <Image source={icon} style={iconStyle} />
         <Text style={getTextStyle(hovered)}>{node.label}</Text>
         <Spacer />
         {/* {showQuickActions && (
@@ -75,7 +79,7 @@ export const NodeRow = ({node}: IProps) => {
       </Row>
     </TouchableOpacity>
   )
-}
+})
 
 const styles = StyleSheet.create({
   row: {
@@ -87,5 +91,17 @@ const styles = StyleSheet.create({
     width: global.metrics.imgSmall,
     resizeMode: `contain`,
     margin: global.metrics.ps,
+  },
+  rowIconPending: {
+    height: global.metrics.imgSmall,
+    width: global.metrics.imgSmall,
+    resizeMode: `contain`,
+    margin: global.metrics.ps,
+    tintColor: {
+      dynamic: {
+        dark: `#EEE`,
+        light: `#313232`,
+      },
+    },
   },
 })
