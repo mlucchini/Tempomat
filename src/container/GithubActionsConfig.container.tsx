@@ -40,7 +40,7 @@ export const GithubActionsConfigContainer = observer(() => {
       <View style={styles.row}>
         <TextInput
           placeholder="Your Github Personal Key goes here"
-          style={{borderWidth: 0}}
+          style={styles.repositoryField}
           value={nodeStore.githubKey}
           onChangeText={nodeStore.setGithubKey}
           placeholderTextColor={placeHolderStyle}
@@ -132,5 +132,17 @@ const styles = StyleSheet.create({
       },
     },
   },
-  repositoryField: {width: `90%`, height: 20, borderWidth: 0, padding: 0},
+  repositoryField: {
+    width: `90%`,
+    height: 20,
+    borderWidth: 0,
+    padding: 0,
+    // @ts-ignore
+    color: {
+      dynamic: {
+        light: `black`,
+        dark: `white`,
+      },
+    },
+  },
 })

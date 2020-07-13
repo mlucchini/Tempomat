@@ -80,7 +80,7 @@ export const AddTokenContainer = observer(({navigation}: IProps) => {
       </Text>
       <View style={styles.row}>
         <TextInput
-          style={{padding: global.metrics.pm}}
+          style={styles.inputField}
           placeholder="Token name goes here..."
           //@ts-ignore
           placeholderTextColor={{
@@ -107,7 +107,7 @@ export const AddTokenContainer = observer(({navigation}: IProps) => {
       <View style={styles.row}>
         <TextInput
           placeholderTextColor={placeHolderStyle}
-          style={{padding: global.metrics.pm}}
+          style={styles.inputField}
           placeholder="Api key goes here..."
           value={key}
           onChangeText={setKey}
@@ -148,5 +148,15 @@ const styles = StyleSheet.create({
         dark: `#1E1E1E`,
       },
     },
+  },
+  inputField: {
+    // @ts-ignore
+    color: {
+      dynamic: {
+        dark: global.colors.gray200,
+        light: global.colors.gray500,
+      },
+    },
+    padding: global.metrics.pm,
   },
 })
